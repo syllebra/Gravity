@@ -125,6 +125,7 @@ public class Attractor : MonoBehaviour
         trajectory.Enqueue(transform.position);
         if (trajectory.Count > 150)
             trajectory.Dequeue();
+        RecomputeRadiusFromMass();
     }
 
     private void OnDrawGizmos()
@@ -138,7 +139,7 @@ public class Attractor : MonoBehaviour
         {
             Gizmos.DrawLine(pLast, p);
             pLast = p;
-            Gizmos.DrawCube(p, Vector3.one * 4F);
+            //Gizmos.DrawCube(p, Vector3.one * 4F);
         }
     }
 }
