@@ -39,4 +39,9 @@ public class Spawner : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return))
             SpawnCloud();
     }
+
+    private void Awake()
+    {
+        UnityEngine.Rendering.GraphicsSettings.lightsUseLinearIntensity = true;
+    }
 }

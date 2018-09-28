@@ -72,7 +72,7 @@ public class Attractor : MonoBehaviour
         if (starLightMat != null)
         {
             starLightMat.color = starLight.color;
-            starLightMat.SetColor("_EmissionColor", starLight.color);
+            starLightMat.SetColor("_EmissionColor", starLight.color* starLight.intensity);
         }
     }
 
