@@ -6,7 +6,75 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Attractor : MonoBehaviour
 {
+    public const float MinEarthMassesForStar = 332946F * 0.08F;
+
     public static Attractor biggest = null;
+
+    protected Light starLight = null;
+    protected Material starLightMat = null;
+
+    public static Gradient colorGradient = null;
+
+    // Try to get a color frommass of a star (in EarthMass units)
+    // here we only approximate in "MainSequence" from a Hertsprung-Russe diagram
+     // (assuming star temperature is directly related to mass in this sequence)
+     // TODO: light.colorTemperature
+    static Color GetColorFromMass(float earthMasses)
+    {
+        if (colorGradient == null)
+        {
+            colorGradient = new Gradient();
+            GradientColorKey[] gck;
+            GradientAlphaKey[] gak;
+            gck = new GradientColorKey[4];
+            gck[0].time = 0.00001F;
+            gck[0].color = Color.red;
+            gck[1].time = 0.001F;
+            gck[1].color = Color.yellow;
+            gck[2].time = 0.010F;
+            gck[2].color = Color.white;
+            gck[3].time = 1.0F;
+            gck[3].color = Color.blue;
+
+            gak = new GradientAlphaKey[4];
+            gak[0].alpha = 1.0F;
+            gak[0].time = 0.00001F;
+            gak[1].alpha = 1.0F;
+            gak[1].time = 0.001F;
+            gak[2].alpha = 1.0F;
+            gak[2].time = 0.01F;
+            gak[3].alpha = 1.0F;
+            gak[3].time = 1.0F;
+            colorGradient.SetKeys(gck, gak);
+        }
+
+        float sunMasses = earthMasses / 332946F;
+      
+        return colorGradient.Evaluate(sunMasses* 0.001F);
+    }
+
+    void UpdateLight()
+    {
+        if (starLight == null && Mass > MinEarthMassesForStar)
+        {
+            starLight = gameObject.AddComponent<Light>();
+            Debug.Log("A star is born");
+            starLight.shadows = LightShadows.Hard;
+            starLightMat = Instantiate(Resources.Load("StarLight")) as Material;
+            GetComponent<Renderer>().material = starLightMat;
+        }
+        if (starLight == null)
+            return;
+
+        starLight.range = Mass * 0.1f;
+        starLight.intensity = Mass * 0.0005f;
+        starLight.color = GetColorFromMass(Mass);
+        if (starLightMat != null)
+        {
+            starLightMat.color = starLight.color;
+            starLightMat.SetColor("_EmissionColor", starLight.color);
+        }
+    }
 
     public float Mass
     {
@@ -18,6 +86,8 @@ public class Attractor : MonoBehaviour
 
             if (biggest == null || Mass > biggest.Mass)
                 biggest = this;
+
+            UpdateLight();
 
             RecomputeRadiusFromMass();
         }
