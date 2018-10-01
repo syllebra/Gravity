@@ -11,6 +11,7 @@ public class Attractor : MonoBehaviour
     public static Attractor biggest = null;
 
     protected Light starLight = null;
+    protected LensFlare starFlare = null;
     protected Material starLightMat = null;
 
     public static Gradient colorGradient = null;
@@ -57,7 +58,12 @@ public class Attractor : MonoBehaviour
     {
         if (starLight == null && Mass > MinEarthMassesForStar)
         {
-            starLight = gameObject.AddComponent<Light>();
+            var star = Instantiate(Resources.Load("Star")) as GameObject;
+            star.transform.parent = transform;
+            star.transform.position = transform.position;
+
+            starLight = star.GetComponent<Light>();// gameObject.AddComponent<Light>();
+            starFlare = star.GetComponent<LensFlare>();
             Debug.Log("A star is born");
             starLight.shadows = LightShadows.Hard;
             starLightMat = Instantiate(Resources.Load("StarLight")) as Material;
@@ -71,9 +77,12 @@ public class Attractor : MonoBehaviour
         starLight.color = GetColorFromMass(Mass);
         if (starLightMat != null)
         {
-            starLightMat.color = starLight.color;
+            //starLightMat.color = starLight.color;
             starLightMat.SetColor("_EmissionColor", starLight.color* starLight.intensity);
         }
+
+        if (starFlare != null)
+            starFlare.color = starLight.color;
     }
 
     public float Mass
