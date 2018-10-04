@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour {
         
         var ratio = Random.Range(minMass, maxMass);
         var attractor = s.GetComponent<Attractor>();
-
+        if(attractor != null)
         attractor.Mass = attractor.Mass * ratio;
 	}
 
