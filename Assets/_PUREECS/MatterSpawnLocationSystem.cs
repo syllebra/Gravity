@@ -3,7 +3,7 @@ using Unity.Entities;
 using Unity.Jobs;
 using UnityEngine;
 
-public class AttractorsSpawnerSystem : JobComponentSystem
+public class MatterSpawnLocationSystem : JobComponentSystem
 {
     private struct AttractorSpawnJob : IJobParallelFor
     {
@@ -25,7 +25,7 @@ public class AttractorsSpawnerSystem : JobComponentSystem
     }
 
     [Inject] private Data _data;
-    [Inject] private AttractorsSpawnerBarrier _barrier;
+    [Inject] private MatterSpawnLocationBarrier _barrier;
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
@@ -42,6 +42,6 @@ public class AttractorsSpawnerSystem : JobComponentSystem
     }
 }
 
-public class AttractorsSpawnerBarrier : BarrierSystem
+public class MatterSpawnLocationBarrier : BarrierSystem
 {
 }

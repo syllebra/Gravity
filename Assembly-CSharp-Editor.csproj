@@ -94,18 +94,6 @@
     <Compile Include="Assets\PostProcessing\Editor\Utils\EditorResources.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\FxStyles.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Entities.Properties">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Entities.Properties.dll</HintPath>
     </Reference>
@@ -127,11 +115,20 @@
     <Reference Include="Unity.Collections">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rendering.Hybrid">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Properties.Editor">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Properties.Editor.dll</HintPath>
@@ -153,6 +150,9 @@
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>D:/_CSY/PERSO/Unity/Gravity/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>

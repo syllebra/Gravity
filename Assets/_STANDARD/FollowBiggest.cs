@@ -17,7 +17,5 @@ public class FollowBiggest : MonoBehaviour
         var dir = Attractor.biggest.transform.position - transform.position;
         float biggestRadius = Attractor.biggest.transform.localScale.magnitude;
         transform.position = Attractor.biggest.transform.position - dir.normalized * distanceRatio * biggestRadius;
-
-
     }
 }

@@ -155,7 +155,7 @@ public class Attractor : MonoBehaviour
 
     void RecomputeRadiusFromMass()
     {
-        float V = rb.mass * density;
+        float V = rb.mass / density;
         float rad = Mathf.Pow((V / Mathf.PI) * (3F / 4F), 1F / 3F);
         transform.localScale = Vector3.one * rad;
     }
